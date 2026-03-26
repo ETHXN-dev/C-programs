@@ -18,7 +18,10 @@ int main() {
 }
 
 void my_strcat(char *dest, const char *src) {
-  int length = strlen(dest);
-  dest += length;
-  strcpy(dest, src);
+  dest += strlen(dest);
+  int length = strlen(src);
+
+  for (int i = 0; i <= length; i++) {
+    dest[i] = src[i];
+  }
 }
