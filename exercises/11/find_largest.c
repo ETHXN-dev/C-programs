@@ -1,22 +1,30 @@
+/* Finds the largest and smallest elements in an array */
 #include <stdio.h>
+#define N 10
 
-void split_time(long total_sec, int *hr, int *min, int *sec);
+void max_min(int a[], int n, int *max);
 
-int main() {
+int main(void) {
+  int b[N], i, big;
 
-  long seconds = 57546;
+  printf("Enter %d numbers: ", N);
 
-  int hour, min, sec = 0;
+  for (i = 0; i < N; i++)
+    scanf("%d", &b[i]);
 
-  split_time(seconds, &hour, &min, &sec);
+  max_min(b, N, &big);
 
-  printf("%.2d: %.2d: %.2d", hour, min, sec);
+  printf("Largest: %d\n", big);
 
   return 0;
 }
 
-void split_time(long total_sec, int *hr, int *min, int *sec) {
-  *hr = total_sec / 3600;
-  *min = (total_sec - (*hr * 3600)) / 60;
-  *sec = total_sec - (*hr * 3600) - (*min * 60);
+void max_min(int a[], int n, int *max) {
+  int i;
+  *max = a[0];
+
+  for (i = 1; i < n; i++) {
+    if (a[i] > *max)
+      *max = a[i];
+  }
 }
