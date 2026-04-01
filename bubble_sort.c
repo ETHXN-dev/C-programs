@@ -32,7 +32,7 @@ void swap(int *x, int *y) {
 
 void bubble_sort(int *numbers, int n) {
   for (int i = 0; i < n - 1; i++) {
-    for (int j = 0; j < n - 1; j++) {
+    for (int j = 0; j < n - 1 - i; j++) {
       if (numbers[j] > numbers[j + 1])
         swap(&numbers[j], &numbers[j + 1]);
     }
