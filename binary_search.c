@@ -38,5 +38,6 @@ void binary_search_helper(int *numbers, int length, int target, int offset) {
   } else if (*middle > target)
     binary_search_helper(numbers, mid, target, offset);
   else if (*middle < target)
-    binary_search_helper(middle + 1, mid, target, offset + mid + 1);
+    binary_search_helper(middle + 1, length - mid - 1, target,
+                         offset + mid + 1);
 }
