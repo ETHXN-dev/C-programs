@@ -1,43 +1,32 @@
 #include <stdio.h>
 
-void binary_search(int *numbers, int length, int target);
-void binary_search_helper(int *, int, int, int);
+int binary_search(int *, int, int);
 
 int main() {
   int list[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
   int n = sizeof(list) / sizeof(list[0]);
 
-  binary_search(list, n, 6);
-  printf("\n");
-  binary_search(list, n, 1);
-  printf("\n");
-  binary_search(list, n, 13);
-  printf("\n");
-  binary_search(list, n, 99);
-  printf("\n");
+  int target = 8;
+
+  printf("%d Found at index %d", target, binary_search(list, n, target));
 
   return 0;
 }
 
-void binary_search(int *numbers, int length, int target) {
-  binary_search_helper(numbers, length, target, 0);
-}
+int binary_search(int *arr, int size, int target) {
+  int left = 0;
+  int right = size - 1;
 
-void binary_search_helper(int *numbers, int length, int target, int offset) {
-  if (length <= 0) {
-    printf("Number not found in the list");
-    return;
+  while (left <= right) {
+    int mid = left + (right - left) / 2;
+
+    if (arr[mid] == target)
+      return mid;
+    else if (arr[mid] < target)
+      left = mid + 1;
+    else if (arr[mid] > target)
+      right = mid - 1;
   }
 
-  int mid = length / 2;
-  int *middle = &numbers[mid];
-
-  if (*middle == target) {
-    printf("%d found at index %d", target, mid + offset);
-    return;
-  } else if (*middle > target)
-    binary_search_helper(numbers, mid, target, offset);
-  else if (*middle < target)
-    binary_search_helper(middle + 1, length - mid - 1, target,
-                         offset + mid + 1);
+  return -1;
 }
