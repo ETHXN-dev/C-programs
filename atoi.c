@@ -16,7 +16,7 @@ int main() {
 }
 
 int stringToInt(char s[], int n) {
-  int num;
+  int num = 0;
 
   for (int i = 0; i < n; i++)
     num = num * 10 + (s[i] - '0');
