@@ -7,7 +7,7 @@ void quick_sort(int *, int, int);
 
 int main() {
 
-    int nums[] = {4, 2, 9, 1, 5, 6};
+    int nums[] = {6, 4, 7, 3, 2, 9, 1, 8, 5};
     size_t size = sizeof(nums) / sizeof(nums[0]);
 
     printf("Before sorting: \n");
@@ -34,18 +34,18 @@ void swap(int *x, int *y) {
 int partition(int *arr, int low, int high) {
 
     int pivot = arr[high];
-    int j = low - 1;
+    int j = low;
 
     for (int i = low; i < high; i++) {
         if (arr[i] <= pivot) {
-            j++;
             swap(&arr[i], &arr[j]);
+            j++;
         }
     }
 
-    swap(&arr[j + 1], &arr[high]);
+    swap(&arr[j], &arr[high]);
 
-    return j + 1;
+    return j;
 }
 
 void quick_sort(int *arr, int low, int high) {
