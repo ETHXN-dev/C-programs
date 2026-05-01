@@ -33,10 +33,15 @@ void insertion_sort(int arr[], size_t size) {
     if (size < 2)
         return;
 
-    for (int i = 1; i < size; i++) {
-        for (int j = i; j > 0; j--) {
-            if (arr[j] < arr[j - 1])
-                swap(&arr[j], &arr[j - 1]);
+    for (size_t i = 1; i < size; i++) {
+        int key = arr[i]; // Element to be inserted
+        int j = i - 1;
+
+        // Shift elements greater than key to the right
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
         }
+        arr[j + 1] = key; // Insert key at correct position
     }
 }
